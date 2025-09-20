@@ -1,4 +1,5 @@
 <%- include('partials/header') %>
+
 <div class="container">
 
     <nav>
@@ -17,7 +18,28 @@
             <li><a href="/admin/sports">Manage Sports</a></li>
         </ul>
     </div>
-    
+    <a href="/sessions/new"><h3>+ Create a New Session</h3></a>
+
+    <hr>
+    <h2>Upcoming Sessions</h2>
+    <% if (sessions.length > 0) { %>
+        <ul>
+            <% sessions.forEach(session => { %>
+                <li>
+                    <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
+                    
+                    <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
+                    
+                    at <%= session.venue %>
+                    (Created by: <%= session.createdBy?.name || '[Deleted User]' %>)
+                    - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No sessions have been created yet. Why don't you create one?</p>
+    <% } %>
+
     <hr>
 
     <a href="/auth/logout">Logout</a>

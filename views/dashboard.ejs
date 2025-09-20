@@ -15,9 +15,25 @@
         <h1>Player Dashboard</h1>
         <p>Welcome! Here you can find and join upcoming sessions.</p>
     </div>
-    <div class="dashboard-content">
-        <p class="placeholder">No sessions available yet.</p>
-    </div>
+
+    <a href="/sessions/new"><h3>+ Create a New Session</h3></a>
+
+    <hr>
+    <h2>Upcoming Sessions</h2>
+    <% if (sessions.length > 0) { %>
+        <ul>
+            <% sessions.forEach(session => { %>
+                <li>
+                    <strong><%= session.sport.name %></strong> on 
+                    <%= session.dateTime.toLocaleString() %> at <%= session.venue %>
+                    (Created by: <%= session.createdBy.name %>)
+                    - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No sessions have been created yet. Why don't you create one?</p>
+    <% } %>
     <a href="/auth/logout" class="logout-link">Logout</a>
 </main>
 <%- include('partials/footer') %>
