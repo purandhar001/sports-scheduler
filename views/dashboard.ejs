@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+
+<main class="container">
+    <nav class="navbar">
+    <h1>
+        SportsScheduler
+    </h1>
+        <div class="navbar-menu">
+            <span class="user-name">Hi, <%= user.name %></span>
+            
+        </div>
+    </nav>
+    <div class="dashboard-header">
+        <h1>Player Dashboard</h1>
+        <p>Welcome! Here you can find and join upcoming sessions.</p>
+    </div>
+    <div class="dashboard-content">
+        <p class="placeholder">No sessions available yet.</p>
+    </div>
+    <a href="/auth/logout" class="logout-link">Logout</a>
+</main>
+<%- include('partials/footer') %>
+
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: antiquewhite;
+    }
+</style>
