@@ -28,6 +28,7 @@ app.use(
 // Routes
 app.use('/', require('./routes/indexRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
+app.use('/admin', require('./routes/sportRoutes'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, console.log(`Server started on port ${PORT}`));

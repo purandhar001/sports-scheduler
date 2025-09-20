@@ -1,23 +1,29 @@
 <%- include('partials/header') %>
+<div class="container">
 
+    <nav>
+        <p>Hi, <%= user.name %> (Admin)</p>
+        
+    </nav>
 
+    <hr>
 
-<main class="container">
-    <h1>
-        SportsScheduler
-    </h1>
-        <div class="navbar-menu">
-            <span class="user-name">Hi, <%= user.name %> (Admin)</span>
-        </div>
-    <div class="dashboard-header">
-        <h1>Admin Dashboard</h1>
-        <p>Manage sports, view reports, and oversee all sessions.</p>
+    <h1>Admin Dashboard</h1>
+    <p>Manage sports, view reports, and oversee all sessions.</p>
+
+    <div>
+        <h2>Admin Tools</h2>
+        <ul>
+            <li><a href="/admin/sports">Manage Sports</a></li>
+        </ul>
     </div>
-    <div class="dashboard-content">
-        <p class="placeholder">Admin panel links will appear here.</p>
-    </div>
-    <a href="/auth/logout" class="logout-link">Logout</a>
-</main>
+    
+    <hr>
+
+    <a href="/auth/logout">Logout</a>
+
+</div>
+
 <%- include('partials/footer') %>
 
 <style>
