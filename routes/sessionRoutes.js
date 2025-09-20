@@ -8,7 +8,10 @@ router.use(isLoggedIn);
 
 
 router.get('/new', sessionController.getNewSessionPage);
-
 router.post('/', sessionController.createSession);
+router.post('/:id/join', sessionController.joinSession);
+router.get('/my-sessions', sessionController.getMySessionsPage);
+router.post('/:id/cancel', sessionController.cancelSession);
+
 
 module.exports = router;

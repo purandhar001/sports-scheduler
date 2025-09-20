@@ -34,6 +34,11 @@ const sessionSchema = new mongoose.Schema({
     enum: ['active', 'cancelled', 'completed'],
     default: 'active',
   },
+ 
+  cancellation_reason: {
+    type: String,
+    trim: true
+  }
 }, { timestamps: true });
 
 module.exports = mongoose.model('Session', sessionSchema);

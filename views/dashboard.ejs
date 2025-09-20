@@ -7,7 +7,8 @@
         SportsScheduler
     </h1>
         <div class="navbar-menu">
-            <span class="user-name">Hi, <%= user.name %></span>
+            <span class="user-name">Hi, <%= user.name %></span><br>
+             <a href="/sessions/my-sessions">My Sessions</a>
             
         </div>
     </nav>
@@ -24,11 +25,42 @@
         <ul>
             <% sessions.forEach(session => { %>
                 <li>
-                    <strong><%= session.sport.name %></strong> on 
-                    <%= session.dateTime.toLocaleString() %> at <%= session.venue %>
-                    (Created by: <%= session.createdBy.name %>)
-                    - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+                    <% if (session.status === 'cancelled') { %>
+                        <p>
+                            <strike>
+                                <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
+                                <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
+                                at <%= session.venue %>
+                            </strike>
+                            <br>
+                            <strong>Cancelled:</strong> <%= session.cancellation_reason %>
+                        </p>
+                    <% } else { %>
+                        <p>
+                            <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
+                            <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
+                            at <%= session.venue %>
+                            (Created by: <%= session.createdBy?.name || '[Deleted User]' %>)
+                            - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+
+                            <% 
+                                const isJoined = session.playersJoined.some(playerId => playerId.equals(user._id));
+                                const isFull = session.playersJoined.length >= session.playersNeeded;
+                            %>
+
+                            <% if (isJoined) { %>
+                                <span>- (You've joined)</span>
+                            <% } else if (isFull) { %>
+                                <span>- (Full)</span>
+                            <% } else { %>
+                                <form action="/sessions/<%= session._id %>/join" method="POST" style="display: inline;">
+                                    <button type="submit">Join</button>
+                                </form>
+                            <% } %>
+                        </p>
+                    <% } %>
                 </li>
+                <hr>
             <% }) %>
         </ul>
     <% } else { %>

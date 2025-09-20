@@ -14,7 +14,7 @@ router.get('/', isLoggedIn, (req, res) => {
 
 router.get('/dashboard', isLoggedIn, async (req, res) => { 
     try {
-        const sessions = await Session.find({ status: 'active' })
+        const sessions = await Session.find({ status: { $in: ['active', 'cancelled'] } })
             .populate('sport')
             .populate('createdBy')
             .sort({ dateTime: 1 });
@@ -27,7 +27,7 @@ router.get('/dashboard', isLoggedIn, async (req, res) => {
   
 router.get('/admin/dashboard', isLoggedIn, isAdmin, async (req, res) => { 
     try {
-        const sessions = await Session.find({ status: 'active' }) 
+        const sessions = await Session.find({ status: { $in: ['active', 'cancelled'] } }) 
             .populate('sport')
             .populate('createdBy')
             .sort({ dateTime: 1 });

@@ -4,6 +4,7 @@
 
     <nav>
         <p>Hi, <%= user.name %> (Admin)</p>
+         <a href="/sessions/my-sessions">My Sessions</a>
         
     </nav>
 
@@ -27,12 +28,25 @@
             <% sessions.forEach(session => { %>
                 <li>
                     <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
-                    
                     <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
-                    
                     at <%= session.venue %>
                     (Created by: <%= session.createdBy?.name || '[Deleted User]' %>)
                     - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+
+                    <% 
+                        const isJoined = session.playersJoined.some(playerId => playerId.equals(user._id));
+                        const isFull = session.playersJoined.length >= session.playersNeeded;
+                    %>
+
+                    <% if (isJoined) { %>
+                        <span>- (You've joined)</span>
+                    <% } else if (isFull) { %>
+                        <span>- (Full)</span>
+                    <% } else { %>
+                        <form action="/sessions/<%= session._id %>/join" method="POST" style="display: inline;">
+                            <button type="submit">Join</button>
+                        </form>
+                    <% } %>
                 </li>
             <% }) %>
         </ul>
