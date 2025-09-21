@@ -1,72 +1,81 @@
-<%- include('partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Scheduler</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
 
-<div class="container">
+    <div class="container">
 
-    <nav>
-        <p>Hi, <%= user.name %> (Admin)</p>
-         <a href="/sessions/my-sessions">My Sessions</a>
-        
-    </nav>
+        <nav>
+            <p>Hi, <%= user.name %> (Admin)</p>
+            <a href="/sessions/my-sessions">My Sessions</a>
+            
+        </nav>
 
-    <hr>
+        <hr>
 
-    <h1>Admin Dashboard</h1>
-    <p>Manage sports, view reports, and oversee all sessions.</p>
+        <h1>Admin Dashboard</h1>
+        <p>Manage sports, view reports, and oversee all sessions.</p>
 
-    <div>
-        <h2>Admin Tools</h2>
-        <ul>
-            <li><a href="/admin/sports">Manage Sports</a></li>
-        </ul>
+        <div>
+            <h2>Admin Tools</h2>
+            <ul>
+                <li><a href="/admin/sports">Manage Sports</a></li>
+                <li><a href="/admin/reports">View Reports</a></li>
+            </ul>
+        </div>
+        <a href="/sessions/new"><h3>+ Create a New Session</h3></a>
+
+        <hr>
+        <h2>Upcoming Sessions</h2>
+        <% if (sessions.length > 0) { %>
+            <ul>
+                <% sessions.forEach(session => { %>
+                    <li>
+                        <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
+                        <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
+                        at <%= session.venue %>
+                        (Created by: <%= session.createdBy?.name || '[Deleted User]' %>)
+                        - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+
+                        <% 
+                            const isJoined = session.playersJoined.some(playerId => playerId.equals(user._id));
+                            const isFull = session.playersJoined.length >= session.playersNeeded;
+                        %>
+
+                        <% if (isJoined) { %>
+                            <span>- (You've joined)</span>
+                        <% } else if (isFull) { %>
+                            <span>- (Full)</span>
+                        <% } else { %>
+                            <form action="/sessions/<%= session._id %>/join" method="POST" style="display: inline;">
+                                <button type="submit">Join</button>
+                            </form>
+                        <% } %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No sessions have been created yet. Why don't you create one?</p>
+        <% } %>
+
+        <hr>
+
+        <a href="/auth/logout">Logout</a>
+
     </div>
-    <a href="/sessions/new"><h3>+ Create a New Session</h3></a>
 
-    <hr>
-    <h2>Upcoming Sessions</h2>
-    <% if (sessions.length > 0) { %>
-        <ul>
-            <% sessions.forEach(session => { %>
-                <li>
-                    <strong><%= session.sport?.name || '[Deleted Sport]' %></strong> on 
-                    <%= session.dateTime?.toLocaleString() || '[No Date Set]' %> 
-                    at <%= session.venue %>
-                    (Created by: <%= session.createdBy?.name || '[Deleted User]' %>)
-                    - Players: <%= session.playersJoined.length %> / <%= session.playersNeeded %>
+</body>
+</html>
 
-                    <% 
-                        const isJoined = session.playersJoined.some(playerId => playerId.equals(user._id));
-                        const isFull = session.playersJoined.length >= session.playersNeeded;
-                    %>
-
-                    <% if (isJoined) { %>
-                        <span>- (You've joined)</span>
-                    <% } else if (isFull) { %>
-                        <span>- (Full)</span>
-                    <% } else { %>
-                        <form action="/sessions/<%= session._id %>/join" method="POST" style="display: inline;">
-                            <button type="submit">Join</button>
-                        </form>
-                    <% } %>
-                </li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No sessions have been created yet. Why don't you create one?</p>
-    <% } %>
-
-    <hr>
-
-    <a href="/auth/logout">Logout</a>
-
-</div>
-
-<%- include('partials/footer') %>
-
-<style>
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: antiquewhite;
-    }
-</style>

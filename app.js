@@ -29,6 +29,7 @@ app.use(
 app.use('/', require('./routes/indexRoutes'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/admin', require('./routes/sportRoutes'));
+app.use('/admin', require('./routes/reportRoutes'));
 app.use('/sessions', require('./routes/sessionRoutes'));
 
 const PORT = process.env.PORT || 3000;

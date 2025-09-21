@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Scheduler</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <nav>
+            <a href="/admin/dashboard">Admin Dashboard</a> | 
+            <a href="/admin/sports">Manage Sports</a> | 
+            <a href="/auth/logout">Logout</a>
+        </nav>
+        <hr>
+
+        <h1>Application Reports</h1>
+
+        <h2>Overall Statistics</h2>
+        <p><strong>Total Sessions Created:</strong> <%= totalSessions %></p>
+
+        <hr>
+
+        <h2>Sport Popularity</h2>
+        <p>Sessions counted per sport, sorted from most to least popular.</p>
+
+        <% if (sportPopularity.length > 0) { %>
+            <table border="1" cellpadding="5" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Sport</th>
+                        <th>Number of Sessions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% sportPopularity.forEach(sport => { %>
+                        <tr>
+                            <td><%= sport.sportName %></td>
+                            <td><%= sport.count %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No session data available to generate a report.</p>
+        <% } %>
+
+    </div>
+
+</body>
+</html>
+

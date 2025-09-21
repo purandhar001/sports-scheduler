@@ -1,48 +1,56 @@
-<%- include('../partials/header') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Scheduler</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+<body>
 
-<div class="container">
+    <div class="container">
 
-    <nav>
-        <a href="/admin/dashboard">Admin Dashboard</a> | 
-        
-    </nav>
+        <nav>
+            <a href="/admin/dashboard">Admin Dashboard</a> | 
+            
+        </nav>
 
-    <hr>
+        <hr>
 
-    <h1>Manage Sports</h1>
+        <h1>Manage Sports</h1>
 
-    <h2>Add a New Sport</h2>
-    <form action="/admin/sports" method="POST">
-        <div>
-            <label for="name">Sport Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <button type="submit">Create Sport</button>
-    </form>
+        <h2>Add a New Sport</h2>
+        <form action="/admin/sports" method="POST">
+            <div>
+                <label for="name">Sport Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <button type="submit">Create Sport</button>
+        </form>
 
-    <hr>
+        <hr>
 
-    <h2>Existing Sports</h2>
-    <% if (sports.length > 0) { %>
-        <ul>
-            <% sports.forEach(sport => { %>
-                <li><%= sport.name %> (Created on: <%= sport.createdAt.toDateString() %>)</li>
-            <% }) %>
-        </ul>
-    <% } else { %>
-        <p>No sports have been created yet.</p>
-    <% } %>
-    <a href="/auth/logout">Logout</a>
+        <h2>Existing Sports</h2>
+        <% if (sports.length > 0) { %>
+            <ul>
+                <% sports.forEach(sport => { %>
+                    <li><%= sport.name %> (Created on: <%= sport.createdAt.toDateString() %>)</li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No sports have been created yet.</p>
+        <% } %>
+        <a href="/auth/logout">Logout</a>
 
-</div>
+    </div>
 
-<%- include('../partials/footer') %>
+</body>
+</html>
 
-<style>
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: antiquewhite;
-    }
-</style>
