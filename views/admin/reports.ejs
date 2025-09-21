@@ -3,15 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Scheduler</title>
-    <style>
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: antiquewhite;
-        }
-    </style>
+    <title>Sports Scheduler - Reports</title>
+    <link rel="stylesheet" href="/reports.css">
 </head>
 <body>
 
@@ -35,7 +28,7 @@
         <p>Sessions counted per sport, sorted from most to least popular.</p>
 
         <% if (sportPopularity.length > 0) { %>
-            <table border="1" cellpadding="5" cellspacing="0">
+            <table>
                 <thead>
                     <tr>
                         <th>Sport</th>
@@ -52,11 +45,10 @@
                 </tbody>
             </table>
         <% } else { %>
-            <p>No session data available to generate a report.</p>
+            <div class="no-data">No session data available to generate a report.</div>
         <% } %>
 
     </div>
 
 </body>
 </html>
-

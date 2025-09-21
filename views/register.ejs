@@ -1,60 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sports Scheduler</title>
-    <style>
-        body{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: antiquewhite;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sports Scheduler - Register</title>
+  <link rel="stylesheet" href="/register.css">
 </head>
+
 <body>
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>Register</h1>
 
-    <div class="auth-container">
-        <div class="auth-card">
-            <h1>Register</h1>
-            
-            <% if (typeof error !== 'undefined' && error) { %>
-                <p class="error-message"><%= error %></p>
-            <% } %>
+      <% if (typeof error !== 'undefined' && error) { %>
+      <p class="error-message"><%= error %></p>
+      <% } %>
 
-            <form action="/auth/register" method="POST">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" required>
-                </div>
-                <div class="form-group-radio">
-                    <label>Role:</label>
-                    <div>
-                        <input type="radio" id="player" name="role" value="player" checked>
-                        <label for="player">Player</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="admin" name="role" value="admin">
-                        <label for="admin">Admin</label>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary">Register</button>
-            </form>
-            <div class="auth-switch">
-                <p>Already have an account? <a href="/auth/login">Login</a></p>
-            </div>
+      <form action="/auth/register" method="POST">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" required>
         </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" name="password" id="password" required>
+        </div>
+        <div class="form-group-radio">
+          <label>Role:</label>
+          <div>
+            <input type="radio" id="player" name="role" value="player" checked>
+            <label for="player">Player</label>
+          </div>
+          <div>
+            <input type="radio" id="admin" name="role" value="admin">
+            <label for="admin">Admin</label>
+          </div>
+        </div>
+        <button type="submit" class="btn-primary">Register</button>
+      </form>
+
+      <div class="auth-switch">
+        <p>Already have an account? <a href="/auth/login">Login</a></p>
+      </div>
     </div>
-
+  </div>
 </body>
-</html>
 
+</html>

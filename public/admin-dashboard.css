@@ -1,0 +1,130 @@
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FDFBEE;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #015551;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 700px;
+            max-width: 95%;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        nav p {
+            margin: 0;
+            font-weight: bold;
+            color: #015551;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #57B4BA;
+            font-weight: bold;
+            margin-left: 12px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FE4F2D;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #015551;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #FDFBEE;
+            margin-bottom: 12px;
+            padding: 12px;
+            border-radius: 6px;
+            border-left: 5px solid #57B4BA;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        li strong {
+            color: #015551;
+        }
+
+        button {
+            padding: 6px 12px;
+            background: #57B4BA;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #015551;
+        }
+
+        a {
+            color: #57B4BA;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #FE4F2D;
+        }
+
+        .tools ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #57B4BA;
+        }
+
+        .logout {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            color: #FE4F2D;
+            text-decoration: none;
+        }
+
+        .logout:hover {
+            text-decoration: underline;
+        }
+
+        .create-session {
+            display: block;
+            text-align: center;
+            margin: 15px 0;
+            color: #57B4BA;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .create-session:hover {
+            color: #015551;
+            text-decoration: underline;
+        }

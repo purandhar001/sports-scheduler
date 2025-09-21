@@ -1,0 +1,107 @@
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #FDFBEE;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #015551;
+        }
+
+        .container {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 600px;
+            max-width: 95%;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            margin-bottom: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #57B4BA;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FE4F2D;
+        }
+
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #015551;
+        }
+
+        form {
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 14px;
+            background: #57B4BA;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            align-self: flex-start;
+        }
+
+        button:hover {
+            background: #015551;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #FDFBEE;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-left: 5px solid #57B4BA;
+            border-radius: 6px;
+            box-shadow: 0px 2px 5px rgba(0,0,0,0.05);
+        }
+
+        hr {
+            margin: 20px 0;
+            border: 0;
+            border-top: 1px solid #57B4BA;
+        }
+
+        a.logout {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #FE4F2D;
+            text-decoration: none;
+        }
+
+        a.logout:hover {
+            text-decoration: underline;
+        }
