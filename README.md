@@ -29,7 +29,6 @@ Here’s a sneak peek into the application's user interface.
 ![Alt Text](Images/fsd-register.png)
 ![Alt Text](Images/my-sessions.png)
 
-(To add your screenshots: 1. Create a folder named screenshots in your project. 2. Add your images (e.g., register.png, dashboard.png). 3. Push the folder to GitHub. 4. Replace the _[Image...]_ placeholders above with ![Description](screenshots/your-image-name.png).)
 
 🎬 Video Demonstration
 Want to see the app in action? Watch this short video walkthrough that demonstrates the core features, from signing up as a player to managing sports as an admin.
